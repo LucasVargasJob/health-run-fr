@@ -1,0 +1,189 @@
+//BREAKPOINTS
+@mixin media($breakpoint, $size: min) {
+
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media only screen and (#{$size}-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+
+@mixin transition($args...){
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// generic transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+// translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x: 0, $y: 0) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+  moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+@mixin box-shadow($args...){
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    -ms-box-shadow: $args;
+    -o-box-shadow: $args;
+    box-shadow: $args;
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+
+@mixin linear-gradient($top, $bottom){
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+
+@mixin _padding($t: 0, $r: $t, $b: $t, $l: $r){
+  @if $t!=$r and $t!=$b and $r!=$l{
+    padding: $t $r $b $l;
+  } @else if $t!=$r or $t==$r and $t!=$b and $l==$r{
+    padding: $t $r $b;
+  } @else if $t!=$r and $t==$b and $r==$l{
+    padding: $t $r;
+  } @else{
+    padding: $t;
+  }
+}
+
+@mixin _margin($t: 0, $r: $t, $b: $t, $l: $r){
+  @if $t!=$r and $t!=$b and $r!=$l{
+    margin: $t $r $b $l;
+  } @else if $t!=$r and $t!=$b and $l==$r{
+    margin: $t $r $b;
+  } @else if $t!=$r and $t==$b and $r==$l{
+    margin: $t $r;
+  } @else{
+    margin: $t;
+  }
+}
+
+@mixin _space($type: '' ,$t: 0, $r: $t, $b: $t, $l: $r){
+  @if $type != null and $type != ''{
+    @if $t!=$r and $t!=$b and $r!=$l{
+      #{$type}: $t $r $b $l;
+    } @else if $t!=$b and $l==$r{
+      #{$type}: $t $r $b;
+    } @else if $t==$b and $r==$l{
+      #{$type}: $t $r;
+    } @else{
+      #{$type}: $t;
+    }
+  } @else{
+    @warn "Unfortunately, no value could be retrieved from `#{$type}`. ";
+  }
+}
+
+@mixin box-sizing($value: border-box) {
+  -webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+  box-sizing: $value;
+}
+
+// create [ BORDER-RADIUS ]
+@mixin border-radius($radius){
+  border-radius: $radius;
+}
+
+// create [ CIRCLE ]
+@mixin make-circle($size){
+  height: $size;
+  width: $size;
+  @include border-radius($size);
+}
+
+// POSITIONS
+@mixin _position($type: static){
+  position: $type;
+}
+
+@mixin _overflow($x: hidden, $y: null){
+
+  @if $y != null{
+    overflow-x: $x;
+    overflow-y: $y;
+  } @else {
+    overflow: $x;
+  }
+}
+
+@mixin _user-select($value: none){
+-webkit-user-select:$value;
+-moz-user-select:$value;
+-ms-user-select:$value;
+user-select:$value;
+}
+
+
+@mixin _hover{
+  &:focus, &:hover{
+    @content;
+  }
+}

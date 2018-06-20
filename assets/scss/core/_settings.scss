@@ -1,0 +1,127 @@
+// create [ LOACTIONS ]
+$fonts_location:        '../fonts/';
+$images_location:       '../images/';
+$backgrounds_location:  '#{$images_location}backgrounds/';
+
+
+// create [ SUFFIX AND PREFIX ]
+$prefix:    '';
+$suffix:    '';
+
+// create [ GLOBALS ]
+$gutter: 20px;
+$margin: 20px;
+$border-radius: 4px;
+
+// create [ BREAKPOINTS ]
+$breakpoints: (
+        xs  :   0,
+        sm  :   576px,
+        md  :   768px,
+        lg  :   992px,
+        xl  :   1200px,
+        xxl :   1500px
+) !default;
+
+
+// USED IN FUNCTIONS
+// LOCATION: core/functions
+$font-size-default: 16;
+
+
+// create [ COLORS ]
+$white:          #FFFFFF;
+$black:          #000000;
+$red:            #F44336;
+$pink:           #E91E63;
+$purple:         #9C27B0;
+$deep-purple:    #673AB7;
+$indigo:         #3F51B5;
+$blue:           #2196F3;
+$light-blue:     #03A9F4;
+$cyan:           #00BCD4;
+$teal:           #009688;
+$green:          #4CAF50;
+$light-green:    #8BC34A;
+$lime:           #CDDC39;
+$yellow:         #FFEB3B;
+$amber:          #FFC107;
+$orange:         #FF9800;
+$deep-orange:    #FF5722;
+$brown:          #795548;
+$gray-100:       #FAFAFA;
+$gray:           #9E9E9E;
+$gray-900:       #212121;
+$blue-gray:      #607D8B;
+$blue-gray-900:  #263238;
+
+// create [ COLORS ARRAY ]
+$colors: (
+        "white"         $white,
+        "black"         $black,
+        "red"           $red,
+        "pink"          $pink,
+        "purple"        $purple,
+        "deep-purple"   $deep-purple,
+        "indigo"        $indigo,
+        "blue"          $blue,
+        "light-blue"    $light-blue,
+        "cyan"          $cyan,
+        "teal"          $teal,
+        "green"         $green,
+        "light-green"   $light-green,
+        "lime"          $lime,
+        "yellow"        $yellow,
+        "amber"         $amber,
+        "orange"        $orange,
+        "deep-orange"   $deep-orange,
+        "brown"         $brown,
+        "gray-100"      $gray-100,
+        "gray"          $gray,
+        "gray-900"      $gray-900,
+        "blue-gray"     $blue-gray,
+        "blue-gray-900" $blue-gray-900
+);
+
+// create [ ANIMATIONS ]
+$ease: ease;
+$timing: .125s;
+
+// crate [ FONTS ]
+$create-fonts: false !default;
+$fonts: font_name font_name font_name;
+
+// create [ EXTERNAL FONTS ]
+$roboto: 'Roboto', sans-serif;
+$fira: 'Fira Sans', sans-serif;
+$default-font: #{$fira}, 'Segoe UI', 'Arial', 'San Francisco', 'Ubuntu', sans-serif;
+
+
+// create [ GRID ]
+$grid-component: true !default;
+$grid-columns:          12;
+
+$spacer:      20px;
+
+
+// create [ TIPOGRAFIA ]
+// create [ TIPOGRAFIA > HELPTEXT ]
+$help-text: true !default;
+
+
+// NAVTOP COMPONENT SETTINGS
+$nav-component:       true !default;
+$nav-shadow:          true !default;
+$nav-background:      $blue-gray-900;
+$nav-color:           $white;
+$nav-height:          60px;
+
+
+// SIDENAV COMPONENT SETTINGS
+$sidenav-component:       true !default;
+$sidenav-shadow:          false !default;
+$sidenav-background:      $blue-gray-900;
+$sidenav-color:           $white;
+$sidenav-width:           250px;
+$sidenav-margin-top:      $nav-height;
+$sidenav-height:          calc(100vh - #{$sidenav-margin-top});

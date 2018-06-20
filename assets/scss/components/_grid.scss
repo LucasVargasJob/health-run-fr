@@ -1,0 +1,71 @@
+.container,
+columns,
+.columns {
+  @extend %clearfix;
+}
+
+columns,
+.columns{
+  @include _margin(0, -$spacer);
+}
+
+
+.container{
+  width: 100%;
+  @include _margin(0, auto);
+  @include _padding(0, $spacer);
+
+  @each $breakpoint_name, $breakpoint_size in $breakpoints {
+
+    @if $breakpoint_size > 0{
+      @include media($breakpoint_name){
+        max-width: $breakpoint_size - $spacer*2;
+      }
+    }
+  }
+}
+
+
+%grid-column {
+  position:       relative;
+  width:          100%;
+  min-height:     1px;
+  float:          left;
+  padding: {
+    left:         $spacer - 5;
+    right:        $spacer - 5;
+  }
+}
+
+@mixin create_grid($breakpoint_name, $columns: $grid-columns){
+
+  @for $i from 1 through $columns {
+    .column{
+      &.#{$breakpoint_name}-#{$i}{
+        max-width: 100%/$columns * $i;
+      }
+    }
+  }
+}
+
+@if $grid-component {
+
+  @each $breakpoint_name, $breakpoint_size in $breakpoints {
+
+    @for $i from 1 through $grid_columns {
+      .column{
+        &.#{$breakpoint_name}-#{$i}{
+          @extend %grid-column;
+        }
+      }
+    }
+
+    @if $breakpoint_size == 0{
+      @include create_grid($breakpoint_name);
+    } @else {
+      @include media($breakpoint_name){
+        @include create_grid($breakpoint_name);
+      }
+    }
+  }
+}
