@@ -1,0 +1,15 @@
+[data-component=map]{
+  position: relative;
+  left: #{$sidenav-width + $spacer};
+  width: calc(100vw - #{$sidenav-width + $spacer});
+  height: calc(100vh - #{$nav-height + $spacer});
+  margin-top: $margin;
+  background-color: $blue-gray-900;
+  padding: $spacer;
+  overflow: hidden;
+
+  img{
+    width: 100%;
+    display: block;
+  }
+}

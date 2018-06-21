@@ -7,7 +7,7 @@
   <title>Share your Health | HEALTH RUM</title>
 
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,800" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css" async>
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 <body>
 <main>
@@ -23,19 +23,27 @@
 
   <nav data-component="sidenav">
     <ul>
-      <li><a href="javascript:void(0)">CRIAR ROTA</a></li>
-      <li><a href="javascript:void(0)">COMPARTILHAR ROTA</a></li>
-      <li><a href="javascript:void(0)">CONVIDAR</a></li>
+      <li><a href="javascript:void(0)" data-target="create-route">CRIAR ROTA</a></li>
+      <li><a href="javascript:void(0)" data-target="share-route">COMPARTILHAR ROTA</a></li>
+      <li><a href="javascript:void(0)" data-target="invite">CONVIDAR</a></li>
     </ul>
   </nav>
 
 
-  <section data-component="map"></section>
+  <section data-component="map">
+    <img src="assets/images/05171242823524.jpg" alt="">
+  </section>
 
-  <section data-component="share-modal"></section>
+  <section data-component="share-route"></section>
 
-  <section data-component="invite-modal"></section>
+  <section data-component="create-route"></section>
 
+  <section data-component="invite"></section>
+
+<div class="text"></div>
 </main>
+
+<script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
+<script src="assets/js/main.js" type="text/javascript"></script>
 </body>
 </html>
