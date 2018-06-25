@@ -1,0 +1,157 @@
+.dropup{
+  z-index: $dropup-z-index;
+
+  &.fixed{
+    @include _position(fixed);
+  }
+  &.relative{
+    @include _position(relative);
+  }
+  &.absolute{
+    @include _position(absolute);
+  }
+
+  &[data-position="top-right"]{
+    top: $gutter;
+    right: $gutter;
+
+    .dropup-content{
+      top: 100%;
+      right: 0;
+      border-top-right-radius: 0;
+    }
+    &.active{
+      >a{
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+  &[data-position="top-left"]{
+    top: $gutter;
+    left: $gutter;
+    .dropup-content{
+      top: 100%;
+      left: 0;
+      border-top-left-radius: 0;
+    }
+    &.active{
+      >a{
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+  &[data-position="bottom-right"]{
+    bottom: $gutter;
+    right: $gutter;
+    .dropup-content{
+      bottom: 100%;
+      right: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &.active{
+      >a{
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+  &[data-position="bottom-left"]{
+    bottom: $gutter;
+    left: $gutter;
+    .dropup-content{
+      bottom: 100%;
+      left: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &.active{
+      >a{
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+
+  >a{
+    position: relative;
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    height: 50px;
+    padding: 0 $gutter;
+    color: $white;
+    text-decoration: none!important;
+
+    &.circle{
+      @include make-circle(40px);
+      padding: 0;
+    }
+  }
+
+  .dropup-content{
+    position: absolute;
+    height: 0;
+    width: 100%;
+    min-width: 150px;
+    max-height: 200px;
+    @include _overflow(hidden, auto);
+    bottom: 100%;
+    border-radius: $border-radius;
+    opacity: 0;
+
+    @include transition(all $timing $ease);
+    li{
+      a{
+        @include _padding($gutter*.5, $gutter);
+        display: block;
+        color: $white;
+        font-size: rem(14);
+        text-decoration: none!important;
+        @include _position(relative);
+
+        &:after{
+          content: '';
+          background-color: rgba($white, .25);
+          @include _position(absolute);
+          height: 1px;
+          width: 80%;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: {
+            left: auto;
+            right: auto;
+          }
+        }
+      }
+
+      &:last-of-type{
+        a{
+          &:after{
+            content: none;
+          }
+        }
+      }
+    }
+  }
+  .dropup-content,.dropup-content li a,>a{
+    @include transition(all $timing $ease);
+  }
+
+  @each $color in $colors {
+    &.bg-#{nth($color, 1)} {
+
+      >a{
+        background-color: #{nth($color, 2)};
+      }
+
+      .dropup-content li a,
+      &.active>a{
+          background-color: darken(nth($color, 2), 5%);
+      }
+    }
+  }
+}

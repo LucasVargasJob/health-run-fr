@@ -1,0 +1,84 @@
+@mixin create-cards{
+  @include _position(relative);
+  @include _margin(rem(15),0);
+  background-color: $card-bg;
+  border-radius: $card-radius;
+  @include _overflow(hidden);
+
+  .card-header{
+    @include _padding($card-padding);
+    border: $card-border;
+    border-top-right-radius: $card-radius;
+    border-top-left-radius: $card-radius;
+
+    @each $color in $colors{
+      &[data-background="#{nth($color, 1)}"],
+      &.bg-#{nth($color, 1)}{
+        background-color: #{nth($color, 2)};
+        border-color: darken(nth($color, 2), 15%);
+      }
+    }
+
+    &[data-background],
+    &[class*="bg-"]{
+      color: $white;
+    }
+
+    .card-title{
+      margin: 0;
+      font-size: rem(17);
+      text-transform: $card-text-transform;
+      font-weight: 500;
+    }
+  }
+  .card-body{
+    @include _padding($card-padding);
+    border: {
+      left:$card-border;
+      right: $card-border;
+      bottom: $card-border;
+    }
+
+    figure{
+      @include flexbox;
+      @include justify-content(center);
+      @include align-items(center);
+      margin-bottom: rem(16);
+      img{
+        display: block;
+        max-width: 70%;
+      }
+      &[data-position="center"]{
+        @include justify-content(center);
+      }
+      &[data-position="left"]{
+        @include justify-content(flex-start);
+      }
+      &[data-position="right"]{
+        @include justify-content(flex-end);
+      }
+    }
+  }
+  .card-footer{
+    @include _padding($card-padding/2, $card-padding);
+    @include _margin(0);
+    border: {
+      left: $card-border;
+      right: $card-border;
+      bottom: $card-border;
+    }
+
+    h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6,p,span,label{
+      font-size: rem(11);
+      small{
+        font-size: rem(9);
+      }
+    }
+  }
+}
+
+@if $cards{
+  .card{
+    @include create-cards;
+  }
+}

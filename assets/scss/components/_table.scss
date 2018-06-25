@@ -1,0 +1,140 @@
+@mixin change-table-color($background-color: $table-background-color, $text-color: $table-text-color, $hover-color: $table-color-hover){
+  background-color: $background-color;
+  color: $text-color;
+  display: table;
+
+  td, th, .td, .tr{
+    border-top: 1px solid $background-color - 100;
+  }
+  thead,
+  .thead{
+    th,
+    .th{
+      border: {
+        bottom: 2px solid $background-color - 100;
+      }
+    }
+  }
+
+   tbody, .tbody{
+     +tbody, .tbody{
+       border-top: 2px solid $background-color - 100;
+     }
+   }
+
+   .table{
+     background-color: $background-color;
+   }
+
+   &[data-style="striped"]{
+     thead, .thead{
+       th, .th{
+         background-color: rgba($hover-color, .5);
+       }
+     }
+     tbody, .tbody{
+       tr, .tr{
+         &:nth-of-type(odd){
+           background-color: rgba($hover-color, .25);
+         }
+       }
+     }
+   }
+
+   &[data-style="striped-hover"],
+   &[data-style="hover-striped"]{
+     thead, .thead{
+       th, .th{
+         background-color: rgba($hover-color, .5);
+       }
+     }
+     tbody, .tbody{
+       tr, .tr{
+         &:nth-of-type(odd){
+           background-color: rgba($hover-color, .25);
+         }
+
+         @include _hover{
+           background-color: rgba($hover-color, .35);
+         }
+       }
+     }
+   }
+   &[data-style="hover"]{
+     tbody, .tbody{
+       tr, .tr{
+         @include _hover{
+           background-color: rgba($hover-color, .1);
+         }
+       }
+     }
+   }
+}
+
+@mixin create-table{
+
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: rem(16);
+  background-color: transparent;
+
+  tr, .tr{
+    @include transition(all $timing - .2 $ease);
+  }
+
+  td, th, .td, .th{
+    padding: rem(12);
+    vertical-align: top;
+    text-align: center;
+  }
+  thead, .thead{
+    th, .th{
+      vertical-align: bottom;
+      border: {
+        top: none;
+      }
+    }
+  }
+
+  table, [data-form="true"]{
+    td, .td{
+      border-top: none!important;
+    }
+  }
+
+  &[data-form="true"]{
+    .thead,
+    .tbody{
+      display: table-row-group;
+      .tr{
+        display: table-row;
+        .th,.td{
+          display: table-cell;
+        }
+
+        &.table-form{
+          display: block;
+          .th, .td{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+   @include change-table-color($gray-100, $blue-gray-900, $gray);
+
+   &.inverse{
+     @include change-table-color($blue-gray-900, $white, $black);
+   }
+}
+
+
+@if $table{
+  table, [data-form="true"]{
+    border-collapse: collapse;
+  }
+  .table{
+    @include create-table;
+  }
+}

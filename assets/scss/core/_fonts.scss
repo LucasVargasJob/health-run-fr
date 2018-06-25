@@ -1,0 +1,16 @@
+
+@if $create-fonts{
+  @each $font in $fonts {
+    @font-face {
+      font-family: '#{$font}';
+      src: url('#{$fonts_location}#{$font}.eot');
+      src: url('#{$fonts_location}#{$font}.eot?#iefix') format('embedded-opentype'),
+      url('#{$fonts_location}#{$font}.woff2') format('woff2'),
+      url('#{$fonts_location}#{$font}.woff') format('woff'),
+      url('#{$fonts_location}#{$font}.ttf') format('truetype'),
+      url('#{$fonts_location}#{$font}.svg') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  }  
+}

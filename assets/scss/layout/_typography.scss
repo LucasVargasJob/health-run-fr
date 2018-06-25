@@ -1,0 +1,107 @@
+// CREATE TEXT COLORS
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6,p,span{
+
+  font-weight: 400;
+
+  small{
+    font-size: 70%;
+  }
+
+  strong{
+    font-weight: 600;
+  }
+
+  u{
+    text-decoration: underline;
+  }
+
+  @each $color in $colors {
+    &.#{nth($color, 1)} {
+      color: #{nth($color, 2)};
+    }
+  }
+}
+
+h1,.h1{
+  font-size: rem(32);
+  @include _margin(rem(15), 0);
+}
+h2,.h2{
+  font-size: rem(28);
+  @include _margin(rem(14), 0);
+}
+h3,.h3{
+  font-size: rem(25);
+  @include _margin(rem(13), 0);
+}
+h4,.h4{
+  font-size: rem(22);
+  @include _margin(rem(12), 0);
+}
+h5,.h5{
+  font-size: rem(18);
+  @include _margin(rem(11), 0);
+}
+h6,.h6{
+  font-size: rem(16);
+  @include _margin(rem(10), 0);
+}
+p{
+  font-size: rem(14);
+  line-height: 130%;
+  @include _space(margin, 0, 0, rem(15));
+}
+label{
+  font-size: rem($label-font-size);
+  font-weight: bold;
+}
+hr{
+  background: $gray;
+  height: 1px;
+  width: 90%;
+  @include flexbox;
+  @include justify-content(center);
+  @include align-items(center);
+  @include _margin(rem(20), auto);
+  border: none;
+}
+
+code{
+  background-color: darken($gray-100, 20%);
+  @include box-shadow(0 0 3px rgba($black, .25));
+  @include _padding(rem(3), rem(3), rem(5));
+  border-radius: $border-radius;
+  display: inline-block;
+  line-height: normal;
+  font-family: monospace;
+  font-size: rem(11);
+  margin-top: rem(20);
+}
+
+
+@if $help-text{
+
+  .text{
+    &-uppercase{
+      text-transform: uppercase;
+    }
+    &-lowercase{
+      text-transform: lowercase;
+    }
+    &-camelcase{
+      text-transform: capitalize;
+    }
+  }
+
+  .align{
+    &-center{
+      text-align: center;
+    }
+    &-left{
+      text-align:left;
+    }
+    &-right{
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+[data-theme=light]{
+  [data-component=topnav]{
+    border-bottom: 1px solid darken($white, 15%);
+    background-color: $white;
+
+    .brand{
+      border-right: 1px solid darken($white, 15%);
+      color: $blue-gray-900;
+    }
+
+    > ul {
+      li{
+        >a{
+          border-left: 1px solid darken($white, 15%);
+          color: $blue-gray-900;
+        }
+      }
+    }
+  }
+
+  [data-component=sidenav]{
+    background-color: $white;
+    ul{
+      li{
+        >a{
+          color: $blue-gray-900;
+          border-bottom: 1px solid darken($white, 15%);
+
+          &:hover, &:focus{
+            color: invert($blue-gray-900);
+            background-color: $blue-gray-900;
+          }
+        }
+      }
+    }
+  }
+}

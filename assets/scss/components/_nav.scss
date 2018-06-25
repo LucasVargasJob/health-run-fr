@@ -1,43 +1,98 @@
-@if $nav-component{
-  [data-component=topnav]{
-    background-color: $nav-background;
-    height: $nav-height;
+// NAV - Component
 
-    @if $nav-shadow{
-      @include box-shadow(2px 0 15px rgba($nav-background, .9));
+@if $create-nav-component{
+
+  [data-component=topnav]{
+    height: 70px;
+    border-bottom: 1px solid darken($white, 15%);
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    a{
+      text-decoration: none!important;
     }
 
-
-    ul{
-      list-style: none;
+    >div{
       display: -webkit-flex;
       display: -ms-flex;
       display: flex;
-
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
+      flex-grow: 1;
+
+      form{
+        flex-grow: 1;
+        padding: 0 $padding;
+      }
+    }
+
+    .menu{
+      color: $white;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      width: 50px;
+      margin-left: $margin;
+      border-radius: $border-radius;
+
+      @each $color in $colors{
+        &.#{nth($color, 1)}{
+          background-color: nth($color, 2);
+        }
+      }
+    }
+
+    .brand{
+      height: 70px;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid darken($white, 15%);
+      padding: 0 $padding;
+      text-transform: uppercase;
+      font-size: em(16);
+      color: $blue-gray-900;
+    }
+
+    .input{
+      height: 50px;
+      margin: 0;
+      border: none!important;
+      background-color: rgba($black, .2);
+      border-radius: $border-radius;
+    }
+
+    > ul {
+      height: 70px;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      justify-content: flex-end;
+      align-items: stretch;
+
+      list-style: none;
 
       li{
-
-        a{
-          height: $nav-height;
-          display: -webkit-flex;
-          display: -ms-flex;
+        >a{
           display: flex;
-
           justify-content: center;
           align-items: center;
-
-          color: $nav-color;
-          font-size: em(15);
-          padding: 0 $spacer;
-
-          &.brand{
-            background-color: invert($blue-gray-900);
-            color: invert($nav-color);
-            width: $sidenav-width;
-            font-size: 150%;
-          }
+          height: 70px;
+          border-left: 1px solid darken($white, 15%);
+          padding: 0 $padding;
+          color: $blue-gray-900;
         }
       }
     }
@@ -45,27 +100,39 @@
 }
 
 
-@if $sidenav-component{
-  [data-component=sidenav]{
-    background-color: $sidenav-background;
-    position: fixed;
-    top: $sidenav-margin-top;
-    left: 0;
-    width: $sidenav-width;
-    height: $sidenav-height;
+[data-component=sidenav]{
+  width: 100%;
+  max-width: 250px;
 
-    ul{
-      padding-top: $spacer;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  height: calc(100vh - 70px);
 
-      li{
+  ul {
+    li {
+      >a {
+        padding: $padding;
+        display: block;
+        border-left: 5px solid transparent;
+        text-decoration: none!important;
+        font-weight: 300;
 
-        a{
-          display: -webkit-flex;
-          display: -ms-flex;
-          display: flex;
-          color: $sidenav-color;
-          padding: ( $spacer / 2) $spacer;
+        &:hover, &:focus{
+          @include transition(all $timing $ease);
         }
+      }
+
+      $count:1;
+      @each $color in $colors {
+        @if $count >= 3{
+          &:nth-child(#{$count - 2}){
+            >a {
+              border-left-color: nth($color, 2);
+            }
+          }
+        }
+        $count : $count + 1;
       }
     }
   }

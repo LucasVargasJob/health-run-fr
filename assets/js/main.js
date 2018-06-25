@@ -1,27 +1,16 @@
-// let PRIVATE = [];
-//
-// PRIVATE.push('menu');
-//
-// let menu = document.querySelector('[data-component=sidenav] ul').addEventListener('click', function(el) {
-//   el.preventDefault();
-//   return el.target.dataset.target;
-// });
-//
-//
-//
-
 $(document).ready( function() {
 
-  let COMPONENTS = ['map', 'modal'];
 
-  COMPONENTS.modal = $('[data-target]');
+  $('[data-component=sidenav] ul li a').on('click', function() {
+    let _this = $(this),
+        _target = $(_this).data('target'),
+        _modal = $('[data-component="' + _target + '"]');
 
-  COMPONENTS.modal.on( "click", function(el) {
-    el.preventDefault();
+    _modal.addClass('active');
+  });
 
-    let target = $(this).data('target');
-    let inner = '[data-component="' + target + '"]';
+  $('.dropback').on('click', function() {
+    $(this).parents().removeClass('active');
+  });
 
-    $(inner).addClass('active');
-  })
 });

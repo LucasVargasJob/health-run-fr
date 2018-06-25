@@ -11,7 +11,15 @@ $suffix:    '';
 // create [ GLOBALS ]
 $gutter: 20px;
 $margin: 20px;
-$border-radius: 4px;
+$padding: 20px;
+$border-radius: 3px;
+
+
+// create [ Z-INDEX ]
+$main-nav-z-index: 2000;
+$side-nav-z-index: 2000;
+$dropup-z-index: 2100;
+
 
 // create [ BREAKPOINTS ]
 $breakpoints: (
@@ -19,14 +27,21 @@ $breakpoints: (
         sm  :   576px,
         md  :   768px,
         lg  :   992px,
-        xl  :   1200px,
-        xxl :   1500px
+        xl  :   1200px
+) !default;
+
+$maxbreakpoints: (
+        xs  :   0,
+        sm  :   575px,
+        md  :   767px,
+        lg  :   991px,
+        xl  :   1199px
 ) !default;
 
 
 // USED IN FUNCTIONS
 // LOCATION: core/functions
-$font-size-default: 16;
+$browser-context: 16;
 
 
 // create [ COLORS ]
@@ -92,36 +107,71 @@ $create-fonts: false !default;
 $fonts: font_name font_name font_name;
 
 // create [ EXTERNAL FONTS ]
+$default-font: 'Roboto', 'Segoe UI', 'Arial', 'San Francisco', 'Ubuntu', sans-serif;
 $roboto: 'Roboto', sans-serif;
-$fira: 'Fira Sans', sans-serif;
-$default-font: #{$fira}, 'Segoe UI', 'Arial', 'San Francisco', 'Ubuntu', sans-serif;
+$fira : 'Fira Sans Condensed', sans-serif;
+
 
 
 // create [ GRID ]
-$grid-component: true !default;
-$grid-columns:          12;
+$create-grid-component: true !default;
+$grid_columns:          12;
 
-$spacer:      20px;
+
+// create [ MARGIN ]
+$create-margin-helper: true !default;
 
 
 // create [ TIPOGRAFIA ]
 // create [ TIPOGRAFIA > HELPTEXT ]
 $help-text: true !default;
 
+// create [ NAVBAR ]
+$create-nav-component:       true !default;
+$create-nav-shadows:         true !default;
+$create-nav-border-bottom:   true !default;
+$create-nav-height:          60px;
 
-// NAVTOP COMPONENT SETTINGS
-$nav-component:       true !default;
-$nav-shadow:          true !default;
-$nav-background:      $blue-gray-900;
-$nav-color:           $white;
-$nav-height:          60px;
+// create [ ASIDE MENU ]
+$create-sidemenu-nav-component:   true !default;
+$create-sidemenu-nav-width:       200px;
+
+// create [ INPUTS ]
+$create-form-inputs: true !default;
+$create-form-inputs-height: 34px;
+$create-form-inputs-border-radius: $border-radius;
+
+// create [ LABEL ]
+$label-font-size: 12;
 
 
-// SIDENAV COMPONENT SETTINGS
-$sidenav-component:       true !default;
-$sidenav-shadow:          false !default;
-$sidenav-background:      $blue-gray-900;
-$sidenav-color:           $white;
-$sidenav-width:           250px;
-$sidenav-margin-top:      $nav-height;
-$sidenav-height:          calc(100vh - #{$sidenav-margin-top});
+// create [ BUTTONS ]
+$buttons: true !default;
+$button-radius: $border-radius;
+$buttons-shadows: true !default;
+
+
+// create [ CARDS ]
+$cards: true !default;
+$card-border: 1px solid rgba($blue-gray-900, .25);
+$card-padding: $gutter;
+$card-radius: $border-radius;
+$card-bg: $gray-100;
+$card-text-transform: none;
+
+
+// create [ BREADCRUMB COMPONENT ]
+$breadcrumb: true !default;
+$breadcrumb-height: 30px;
+$breadcrumb-bg: $gray-100 - 50;
+$breadcrumb-bg-inverse: $blue-gray-900;
+$breadcrumb-radius: $border-radius;
+$breadcrumb-hover-color: $teal;
+
+
+// create [ TABLE COMPONENT ]
+$table: true !default;
+
+$table-text-color: $blue-gray-900;
+$table-background-color: $white;
+$table-color-hover: $gray-100;

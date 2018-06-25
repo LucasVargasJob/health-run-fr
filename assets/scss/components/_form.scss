@@ -1,0 +1,27 @@
+@mixin create-inputs{
+  display: block;
+  height: $create-form-inputs-height;
+  padding: 0 $gutter/2;
+  max-width: 100%;
+  width: 100%;
+  outline: none!important;
+  border-radius: $create-form-inputs-border-radius;
+  border: 1px solid $gray;
+  margin-bottom: $margin;
+
+  @include transition(all $timing $ease);
+}
+
+
+@if $create-form-inputs{
+  .group{
+    @include _position(relative);
+  }
+  .input{
+    @include create-inputs;
+
+    &:focus{
+      border-color: $gray-900;
+    }
+  }
+}

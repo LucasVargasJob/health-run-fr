@@ -6,17 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Share your Health | HEALTH RUM</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 <body>
-<main>
-
+<main data-theme="dark">
 
   <nav data-component="topnav">
+    <div>
+      <a href="" class="brand">Health Run</a>
+      <a href="javascript:void(0)" class="menu indigo"><i class="fas fa-bars"></i></a>
+
+      <form action="">
+        <input type="text" class="input" placeholder="Pesquise por uma rota">
+      </form>
+    </div>
     <ul>
-      <li><a href="" class="brand">Health Run</a></li>
       <li><a href="javascript:void(0)">LogOut</a></li>
+      <li><a href="javascript:void(0)">LogIn</a></li>
     </ul>
   </nav>
 
@@ -38,9 +46,24 @@
 
   <section data-component="create-route"></section>
 
-  <section data-component="invite"></section>
+  <section data-component="invite">
+    <div class="dropback"></div>
+    <div class="card">
+      <div class="card-header" data-background="blue-gray-900">
+        <h2 class="card-title">Convide um Amigo(a)</h2>
+      </div>
+      <div class="card-body">
+        <form action="">
+          <label>E-mail</label>
+          <input type="email" class="input">
 
-<div class="text"></div>
+          <label>Código de compartilhamento</label>
+          <input type="text" class="input" value="asd4794b4d44as7dakhb" disabled>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"></script>

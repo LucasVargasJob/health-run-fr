@@ -1,0 +1,80 @@
+@mixin create-breadcrumb{
+  list-style: none;
+  @include flexbox;
+  @include align-items(center);
+  height: $breadcrumb-height;
+  @include _padding(0, rem(8));
+  background-color: $breadcrumb-bg;
+  margin: rem(15) 0;
+  border-radius: $breadcrumb-radius;
+
+  &[data-position="left"]{
+    @include justify-content(flex-start);
+  }
+  &[data-position="center"]{
+    @include justify-content(center);
+  }
+  &[data-position="right"]{
+    @include justify-content(flex-end);
+  }
+
+  li{
+    padding-left: rem(25);
+    @include _position(relative);
+    color: $blue-gray-900 + 100;
+
+    &:before{
+      content: '/';
+      @include _position(absolute);
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: rem(25);
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+    }
+
+    a{
+      color: $blue-gray-900;
+      text-decoration: none!important;
+      font-size: rem(13);
+      font-weight: 500;
+
+      @include transition(all $timing $ease);
+
+      @include _hover{
+        color: $breadcrumb-hover-color;
+      }
+    }
+
+    &:first-of-type{
+      padding-left: 0;
+      &:before{
+        content: none;
+      }
+    }
+  }
+
+  &.inverse{
+    background-color: $breadcrumb-bg-inverse;
+
+    li{
+      a{
+        color: $gray-100 - 30;
+
+        @include _hover{
+          color: $breadcrumb-hover-color;
+        };
+      }
+    }
+  }
+}
+
+
+
+@if $breadcrumb{
+  .breadcrumb{
+    @include create-breadcrumb;
+  }
+}

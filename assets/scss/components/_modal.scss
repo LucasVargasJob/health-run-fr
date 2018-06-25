@@ -1,0 +1,42 @@
+[data-component=invite]{
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2500;
+  opacity: 0;
+  visibility: hidden;
+
+  @include transition(all $timing $ease);
+
+  &.active{
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dropback{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($black, .95);
+  }
+
+  .card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+    border-radius: $border-radius * 2;
+
+    label{
+      font-weight: 300;
+      font-size: em(14);
+    }
+  }
+}

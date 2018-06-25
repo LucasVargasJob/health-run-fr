@@ -1,0 +1,146 @@
+@if $buttons{
+  button,
+  .button{
+    display: inline-block;
+    @include _padding(rem(8),rem(12));
+    border-radius: $button-radius;
+    white-space: nowrap;
+    vertical-align: middle;
+    @include _user-select;
+    border: none;
+    cursor: pointer;
+    outline: none!important;
+
+    font-size: rem(14);
+    font-weight: 400;
+    text-transform: none;
+    color: $black;
+    text-decoration: none!important;
+    line-height: 1.5;
+    text-align: center;
+
+    min-width: rem(80);
+
+    margin-bottom: rem(5);
+
+    @include transition(all $timing $ease);
+
+    @include _hover{
+      z-index: 1;
+    }
+
+    &[data-size="small"]{
+      font-size: rem(11);
+      @include _padding(rem(4), rem(6));
+      min-width: rem(35);
+    }
+    &[data-size="large"]{
+      font-size: rem(16);
+      @include _padding(rem(12), rem(16));
+    }
+
+    @each $color in $colors {
+
+        $nome : nth($color, 1);
+        $cor : nth($color, 2);
+
+      &.#{$nome} {
+        background-color: $cor;
+        color: $white;
+      }
+
+      @if $nome == 'gray-100'{
+        &.default{
+          background-color: $cor;
+          color: $gray-900;
+        }
+      }
+    }
+
+    &.rounded{
+      border-radius: 100px;
+    }
+
+    @include _hover{
+      @each $color in $colors {
+        &.#{nth($color, 1)} {
+          background-color: darken(nth($color, 2), 10%);
+          @if $buttons-shadows{
+            @include box-shadow(0 0 0 rem(2) rgba(nth($color, 2), .5));
+          }
+        }
+
+        @if nth($color, 1) == 'gray-100'{
+          &.default{
+            background-color: darken(nth($color, 2), 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .buttons{
+    @include flexbox;
+    @include justify-content(flex-start);
+    @extend %clearfix;
+
+    &[data-position="center"],
+    &.center{
+      @include justify-content(center);
+    }
+    &[data-position="right"],
+    &.right{
+      @include justify-content(flex-end);
+    }
+    &[data-position="left"],
+    &.left{
+      @include justify-content(flex-start);
+    }
+    &[data-position="justify"]
+    &.justify{
+      @include justify-content(center);
+      .button{
+        @include flex-grow(1);
+      }
+    }
+
+    &[data-size="small"]{
+      .button{
+        font-size: rem(11);
+        @include _padding(rem(4), rem(6));
+        min-width: rem(35);
+      }
+    }
+    &[data-size="large"]{
+      .button{
+        font-size: rem(16);
+        @include _padding(rem(12), rem(16));
+      }
+    }
+
+    .button{
+      border-radius: 0;
+      float: left;
+
+      &:first-child{
+        border-radius: $border-radius 0 0 $border-radius;
+      }
+
+      &:last-child{
+        border-radius: 0 $border-radius $border-radius 0;
+      }
+    }
+
+    &.rounded{
+      .button{
+        &:first-of-type{
+          border-radius: $border-radius*100 0 0 $border-radius*100;
+        }
+
+        &:last-of-type{
+          border-radius: 0 $border-radius*100 $border-radius*100 0;
+        }
+      }
+    }
+  }
+}
