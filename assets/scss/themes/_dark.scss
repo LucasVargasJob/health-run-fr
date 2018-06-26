@@ -1,4 +1,9 @@
 [data-theme=dark]{
+  [data-component=login]{
+    form{
+      background-color: $blue-gray-900;
+    }
+  }
   [data-component=topnav]{
     border-bottom: 1px solid darken($blue-gray-900, 5%);
     background-color: $blue-gray-900;
@@ -10,6 +15,7 @@
 
     > ul {
       li{
+        &.nav-text,
         >a{
           border-left: 1px solid darken($blue-gray-900, 5%);
           color: invert($blue-gray-900);
@@ -21,17 +27,20 @@
   [data-component=sidenav]{
     background-color: $blue-gray-900;
 
-    ul{
-      li{
-        >a{
-          color: $white;
-          border-bottom: 1px solid darken($blue-gray-900, 5%);
+    .menu-items{
+      background-color: $blue-gray-900;
+      >a{
+        color: $white;
+        border-bottom: 1px solid darken($blue-gray-900, 5%);
 
-          &:hover, &:focus{
-            color: $blue-gray-900;
-            background-color: invert($blue-gray-900);
-          }
+        &:hover, &:focus{
+          color: $blue-gray-900;
+          background-color: invert($blue-gray-900);
         }
+      }
+
+      .sub-menu{
+        background-color: darken($blue-gray-900, 2%);
       }
     }
   }

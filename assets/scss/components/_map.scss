@@ -1,0 +1,20 @@
+[data-component=map]{
+  position: relative;
+  top: 70px;
+  left: 250px;
+  height: calc(100vh - 70px);
+  width: calc(100% - 250px);
+  z-index: 2;
+
+  #map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  img{
+    width: 100%;
+  }
+}

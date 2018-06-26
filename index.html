@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Share your Health | HEALTH RUM</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
@@ -16,25 +16,42 @@
   <nav data-component="topnav">
     <div>
       <a href="" class="brand">Health Run</a>
-      <a href="javascript:void(0)" class="menu indigo"><i class="fas fa-bars"></i></a>
+      <a href="javascript:void(0)" class="menu"><i class="fas fa-bars"></i></a>
 
       <form action="">
         <input type="text" class="input" placeholder="Pesquise por uma rota">
       </form>
     </div>
     <ul>
-      <li><a href="javascript:void(0)">LogOut</a></li>
-      <li><a href="javascript:void(0)">LogIn</a></li>
+      <li class="nav-text">Bem Vindo André Carello</li>
+      <li><a href="login.html">Sair</a></li>
+      <!-- <li><a href="">Login</a></li> -->
     </ul>
   </nav>
 
 
   <nav data-component="sidenav">
-    <ul>
-      <li><a href="javascript:void(0)" data-target="create-route">CRIAR ROTA</a></li>
-      <li><a href="javascript:void(0)" data-target="share-route">COMPARTILHAR ROTA</a></li>
-      <li><a href="javascript:void(0)" data-target="invite">CONVIDAR</a></li>
-    </ul>
+    <div class="menu-items">
+      <div>
+        <a href="javascript:void(0)" data-target=".create-route">CRIAR ROTA</a>
+      </div>
+      <div>
+        <a href="javascript:void(0)" data-target=".share-route">COMPARTILHAR ROTA</a>
+      </div>
+
+
+      <div>
+        <a href="javascript:void(0)" data-target=".invite">CONVIDAR</a>
+        <div class="sub-menu invite">
+          <div class="sub-menu-title">Convide um Amigo(a)</div>
+          <form action="">
+            <label>E-mail</label>
+            <input type="email" class="input">
+
+          </form>
+        </div>
+      </div>
+    </div>
   </nav>
 
 
@@ -45,24 +62,6 @@
   <section data-component="share-route"></section>
 
   <section data-component="create-route"></section>
-
-  <section data-component="invite">
-    <div class="dropback"></div>
-    <div class="card">
-      <div class="card-header" data-background="blue-gray-900">
-        <h2 class="card-title">Convide um Amigo(a)</h2>
-      </div>
-      <div class="card-body">
-        <form action="">
-          <label>E-mail</label>
-          <input type="email" class="input">
-
-          <label>Código de compartilhamento</label>
-          <input type="text" class="input" value="asd4794b4d44as7dakhb" disabled>
-        </form>
-      </div>
-    </div>
-  </section>
 
 </main>
 

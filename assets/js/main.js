@@ -1,12 +1,12 @@
 $(document).ready( function() {
 
 
-  $('[data-component=sidenav] ul li a').on('click', function() {
+  $('[data-component=sidenav] .menu-items a').on('click', function() {
     let _this = $(this),
         _target = $(_this).data('target'),
-        _modal = $('[data-component="' + _target + '"]');
+        _submenu = $(_target);
 
-    _modal.addClass('active');
+    _submenu.toggleClass('active');
   });
 
   $('.dropback').on('click', function() {

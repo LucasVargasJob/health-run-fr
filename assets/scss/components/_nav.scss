@@ -14,6 +14,7 @@
     top: 0;
     left: 0;
     right: 0;
+    z-index: 6;
 
     a{
       text-decoration: none!important;
@@ -29,7 +30,6 @@
 
       form{
         flex-grow: 1;
-        padding: 0 $padding;
       }
     }
 
@@ -40,10 +40,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 50px;
-      width: 50px;
-      margin-left: $margin;
-      border-radius: $border-radius;
+      height: 70px;
+      width: 70px;
 
       @each $color in $colors{
         &.#{nth($color, 1)}{
@@ -67,11 +65,17 @@
     }
 
     .input{
-      height: 50px;
+      height: 70px;
       margin: 0;
       border: none!important;
       background-color: rgba($black, .2);
-      border-radius: $border-radius;
+      color: $white;
+      font-size: em(16);
+
+      @include placeholder{
+        color: darken($white, 50%);
+        font-family: $fira;
+      }
     }
 
     > ul {
@@ -85,6 +89,7 @@
       list-style: none;
 
       li{
+        &.nav-text,
         >a{
           display: flex;
           justify-content: center;
@@ -92,7 +97,6 @@
           height: 70px;
           border-left: 1px solid darken($white, 15%);
           padding: 0 $padding;
-          color: $blue-gray-900;
         }
       }
     }
@@ -108,32 +112,73 @@
   top: 70px;
   left: 0;
   height: calc(100vh - 70px);
+  z-index: 5;
 
-  ul {
-    li {
+  @include box-shadow(3px 0 8px rgba($black, .75));
+
+  .menu-items {
+    height: calc(100vh - 70px);
+    >div{
       >a {
         padding: $padding;
         display: block;
         border-left: 5px solid transparent;
         text-decoration: none!important;
         font-weight: 300;
+        color: $white;
 
         &:hover, &:focus{
           @include transition(all $timing $ease);
         }
+      } // end [ A ]
+    }
+
+    .sub-menu{
+      position: fixed;
+      top: 70px;
+      left: 0;
+      height: calc(100vh - 70px);
+      width: 250px;
+      z-index: -1;
+      @include transition(all $timing $ease);
+
+      &.active{
+        left: 250px;
       }
 
-      $count:1;
-      @each $color in $colors {
-        @if $count >= 3{
+      .sub-menu-title{
+        color: $white;
+        height: 70px;
+
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form{
+        padding: ($padding / 2) $padding;
+      }
+    } // end [ .SUB-MENU ]
+
+    $count:1;
+    @each $color in $colors {
+      @if $count >= 3{
+        >div{
           &:nth-child(#{$count - 2}){
             >a {
               border-left-color: nth($color, 2);
             }
+            .sub-menu{
+              .sub-menu-title{
+                background-color: nth($color, 2);
+              }
+            }
           }
         }
-        $count : $count + 1;
       }
+      $count : $count + 1;
     }
-  }
-}
+  } // end [ .MENU-ITEMS ]
+} // end [ DATA-COMPONENT=SIDENAV ]

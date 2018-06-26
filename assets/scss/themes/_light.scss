@@ -20,16 +20,13 @@
 
   [data-component=sidenav]{
     background-color: $white;
-    ul{
-      li{
-        >a{
-          color: $blue-gray-900;
-          border-bottom: 1px solid darken($white, 15%);
-
-          &:hover, &:focus{
-            color: invert($blue-gray-900);
-            background-color: $blue-gray-900;
-          }
+    .menu-items{
+      >a{
+        color: $blue-gray-900;
+        border-bottom: 1px solid darken($white, 15%);
+        &:hover, &:focus{
+          color: invert($blue-gray-900);
+          background-color: $blue-gray-900;
         }
       }
     }
