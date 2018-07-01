@@ -1,0 +1,12 @@
+{
+  "default_name" : "main",
+  "images" : "assets/images",
+  "javascript" : "assets/js",
+  "css" : "assets/css",
+  "sass" : "assets/scss",
+  "exclude_files" : {
+    "javascript" : "!assets/js",
+    "css" : "!assets/css",
+    "sass" : "!assets/scss"
+  }
+}

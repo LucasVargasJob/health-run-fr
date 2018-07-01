@@ -114,8 +114,11 @@
   height: calc(100vh - 70px);
   z-index: 5;
 
-  @include box-shadow(3px 0 8px rgba($black, .75));
+  @include transition(left $timing $ease);
 
+  &.collapse{
+    left: -250px;
+  }
   .menu-items {
     height: calc(100vh - 70px);
     >div{
@@ -134,8 +137,8 @@
     }
 
     .sub-menu{
-      position: fixed;
-      top: 70px;
+      position: absolute;
+      top: 0;
       left: 0;
       height: calc(100vh - 70px);
       width: 250px;

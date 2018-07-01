@@ -6,6 +6,8 @@
   width: calc(100% - 250px);
   z-index: 2;
 
+  @include transition(all $timing $ease ($timing/2));
+
   #map{
     position: absolute;
     top: 0;
@@ -16,5 +18,10 @@
 
   img{
     width: 100%;
+  }
+
+  &.expanded{
+    width: 100%;
+    left: 0;
   }
 }
