@@ -1,11 +1,12 @@
 $(document).ready( function() {
 
-  let PRIVATE = ['sidenav', 'map', 'form'];
+  let PRIVATE = ['sidenav', 'map', 'form', 'togglr'];
 
 
   PRIVATE.sidenav = $('[data-component=sidenav]');
   PRIVATE.map = $('[data-component=map]');
   PRIVATE.form = $('[data-component=topnav] form');
+  PRIVATE.togglr = $('.toggleMenu');
 
   $('[data-component=sidenav] .menu-items a').on('click', function() {
     let _this = $(this),
@@ -13,17 +14,27 @@ $(document).ready( function() {
         _submenu = $(_target);
 
     _submenu.toggleClass('active');
+    _submenu.find('.sub-menu-title').append('<a href=""><i class="fas fa-chevron-left"></i></a>');
+
+  _submenu.find('a').click( function(event) {
+      event.preventDefault();
+      _submenu.removeClass('active');
+      setTimeout( function() {
+        _submenu.find('.sub-menu-title a').remove();
+      }, 125)
+    });
   });
 
   $('.dropback').on('click', function() {
     $(this).parents().removeClass('active');
   });
 
-  $('.toggleMenu').on('click', function() {
+  PRIVATE.togglr.on('click', function() {
     let _this = $(this);
 
-    $(PRIVATE.sidenav).toggleClass('collapse');
-    $(PRIVATE.map).toggleClass('expanded');
+    PRIVATE.sidenav.toggleClass('collapse');
+    PRIVATE.map.toggleClass('expanded');
+    PRIVATE.sidenav.find('.active').removeClass('active');
   });
 
   $('.toggleSearch').on('click', function() {
@@ -31,8 +42,8 @@ $(document).ready( function() {
   });
 
   if( window.matchMedia('(min-width: 768px)').matches ){
-    $(PRIVATE.sidenav).removeClass('collapse');
-    $(PRIVATE.map).removeClass('expanded');
+    PRIVATE.sidenav.removeClass('collapse');
+    PRIVATE.map.removeClass('expanded');
   }
 
   $(window).resize( function(){
@@ -56,7 +67,8 @@ $(document).ready(function(){
         _expression = new RegExp(_val, 'i'),
         _output = '',
         _icon = '',
-        _note = '';
+        _note = '',
+        _private = '';
 
     $.getJSON(APP_ROOT + 'assets/js/data.json', function( data ) {
       $.each(data, function(key, value){
@@ -66,6 +78,10 @@ $(document).ready(function(){
             _icon = 'fas fa-heart';
           } else {
             _icon = 'far fa-heart';
+          }
+
+          if( value.private ){
+            _private = 'fas fa-eye-slash'
           }
 
           switch (value.note) {
@@ -88,8 +104,9 @@ $(document).ready(function(){
           _output += '<div class="dropdown-item">';
           _output += '<a href="">' + value.name + '</a>';
           _output += '<div class="dropdown-options">';
+          _output += '<a><i class="' + _private + '"></i></a>';
           _output += '<a href=""><i class="' + _icon + '"></i></a>';
-          _output += '<a href=""><i class="' + _note + '"></i></a>'
+          _output += '<a href=""><i class="' + _note + '"></i></a>';
           _output += '</div>';
           _output += '</div>';
         }

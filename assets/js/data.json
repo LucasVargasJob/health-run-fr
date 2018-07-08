@@ -4,20 +4,23 @@
     "name" : "Redenção",
     "slug" : "redencao",
     "note" : 5,
-    "fav" : true
+    "fav" : true,
+    "private" : true
   },
   {
     "id" : 2,
     "name" : "Parcão",
     "slug" : "parcao",
     "note" : 5,
-    "fav" : false
+    "fav" : false,
+    "private" : false
   },
   {
     "id" : 3,
     "name" : "Juca Batista",
     "slug" : "juca-batista",
     "note" : 2,
-    "fav" : false
+    "fav" : false,
+    "private" : false
   }
 ]
