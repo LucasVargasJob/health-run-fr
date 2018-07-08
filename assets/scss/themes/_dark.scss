@@ -9,8 +9,12 @@
     background-color: $blue-gray-900;
 
     .brand{
-      border-right: 1px solid darken($blue-gray-900, 5%);
+      // border-right: 1px solid darken($blue-gray-900, 5%);
       color: invert($blue-gray-900);
+    }
+
+    .input{
+      background-color: darken($blue-gray-900, 5%);
     }
 
     > ul {
