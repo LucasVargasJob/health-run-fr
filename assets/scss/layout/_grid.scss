@@ -1,12 +1,16 @@
-.container,
-columns,
-.columns {
-  @extend %clearfix;
-}
-
 columns,
 .columns{
-  @include _margin(0, -$gutter);
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin: {
+    left: -#{$gutter / 2};
+    right: -#{$gutter / 2};
+  }
 }
 
 
@@ -30,19 +34,23 @@ columns,
   position:       relative;
   width:          100%;
   min-height:     1px;
-  float:          left;
   padding: {
-    left:         $gutter - 5;
-    right:        $gutter - 5;
+    left:         $gutter / 2;
+    right:        $gutter / 2;
   }
 }
 
 @mixin create_grid($breakpoint_name, $columns: $grid_columns){
 
   @for $i from 1 through $columns {
+
+    $width : 100%/$columns * $i;
+
     .column{
       &.#{$breakpoint_name}-#{$i}{
-        max-width: 100%/$columns * $i;
+        max-width: $width;
+        width: $width;
+        flex: 0 0 $width;
       }
     }
   }

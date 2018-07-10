@@ -1,0 +1,55 @@
+[data-component=history]{
+  position: fixed;
+  top: 50px;
+  right: -250px;
+  bottom: 0;
+  background-color: $blue-gray-900;
+  width: 250px;
+  z-index: 100;
+
+  @include transition(all $timing $ease);
+
+  &.active{
+    right: 0;
+  }
+
+  .history-header{
+    background-color: rgba($black, .15);
+    color: $white;
+
+    height: 70px;
+    width: 100%;
+
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .history-item{
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba($black, .15);
+    padding: 10px 5px;
+
+    p{
+      color: $white;
+      font-size: em(20);
+    }
+
+    >div{
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+      height: 15px;
+
+      span{
+        color: rgba($white, .3);
+      }
+    }
+  }
+}

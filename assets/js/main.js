@@ -1,12 +1,18 @@
+let current = new Date();
+let dd = current.getDate();
+let mm = current.getMonth() + 1;
+let yyyy = current.getFullYear();
+
+
 $(document).ready( function() {
 
-  let PRIVATE = ['sidenav', 'map', 'form', 'togglr'];
+  let PRIVATE = ['sidenav', 'map', 'form', 'history'];
 
 
   PRIVATE.sidenav = $('[data-component=sidenav]');
   PRIVATE.map = $('[data-component=map]');
   PRIVATE.form = $('[data-component=topnav] form');
-  PRIVATE.togglr = $('.toggleMenu');
+  PRIVATE.history = $('[data-component=history]');
 
   $('[data-component=sidenav] .menu-items a').on('click', function() {
     let _this = $(this),
@@ -29,7 +35,7 @@ $(document).ready( function() {
     $(this).parents().removeClass('active');
   });
 
-  PRIVATE.togglr.on('click', function() {
+  $('.toggleMenu').on('click', function() {
     let _this = $(this);
 
     PRIVATE.sidenav.toggleClass('collapse');
@@ -39,6 +45,10 @@ $(document).ready( function() {
 
   $('.toggleSearch').on('click', function() {
     PRIVATE.form.toggleClass('active');
+  });
+
+  $('.toggleHistory').on('click', function() {
+    PRIVATE.history.toggleClass('active');
   });
 
   if( window.matchMedia('(min-width: 768px)').matches ){
@@ -120,3 +130,62 @@ $(document).ready(function(){
     });
   });
 });
+
+$(document).ready( function() {
+
+  let mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+  setMonth(document.getElementById('mes'), mes);
+  setDay(document.getElementById('dia'), dd);
+  console.log(dd);
+
+  $('#mes').on('change', function() {
+    setDay(document.getElementById('dia'), this.value);
+    console.log(this.value);
+  });
+
+});
+
+function getDaysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
+function setMonth(t, a){
+
+  let r = '',
+      s = a.length,
+      attr;
+
+  for (var i = 0; i < s; i++) {
+    if ( mm > (i+1) ){
+      attr = 'disabled';
+    } else if ( mm == (i+1) ) {
+      attr = 'selected';
+    } else {
+      attr = ''
+    }
+
+    setDay(document.getElementById('dia'), getDaysInMonth(yyyy, mm));
+
+    r += '<option value="'+ (i+1) +'" ' + attr + '>'+ a[i] +'</option>\n';
+  }
+  t.innerHTML = r;
+}
+
+function setDay(t, m){
+  let r = '';
+
+  for (var i = 0; i < getDaysInMonth(yyyy, m); i++) {
+    if ( dd > (i+1) ){
+      attr = 'disabled';
+    } else if ( dd == (i+1) ) {
+      attr = 'selected';
+    } else {
+      attr = ''
+    }
+
+    r += '<option value="'+ (i+1) +'" ' + attr + '>'+ (i+1) +'</option>\n';
+  }
+
+  t.innerHTML = r;
+}

@@ -1,17 +1,9 @@
-.container,
-columns,
-.columns, .buttons {
+.buttons {
   *zoom: 1; }
-  .container:before,
-  columns:before,
-  .columns:before, .buttons:before, .container:after,
-  columns:after,
-  .columns:after, .buttons:after {
+  .buttons:before, .buttons:after {
     content: " ";
     display: table; }
-  .container:after,
-  columns:after,
-  .columns:after, .buttons:after {
+  .buttons:after {
     clear: both; }
 
 .no-margin {
@@ -189,7 +181,13 @@ body {
 
 columns,
 .columns {
-  margin: 0 -20px; }
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px; }
 
 .container {
   width: 100%;
@@ -212,149 +210,268 @@ columns,
   position: relative;
   width: 100%;
   min-height: 1px;
-  float: left;
-  padding-left: 15px;
-  padding-right: 15px; }
+  padding-left: 10px;
+  padding-right: 10px; }
 
 .column.xs-1 {
-  max-width: 8.33333%; }
+  max-width: 8.33333%;
+  width: 8.33333%;
+  flex: 0 0 8.33333%; }
 
 .column.xs-2 {
-  max-width: 16.66667%; }
+  max-width: 16.66667%;
+  width: 16.66667%;
+  flex: 0 0 16.66667%; }
 
 .column.xs-3 {
-  max-width: 25%; }
+  max-width: 25%;
+  width: 25%;
+  flex: 0 0 25%; }
 
 .column.xs-4 {
-  max-width: 33.33333%; }
+  max-width: 33.33333%;
+  width: 33.33333%;
+  flex: 0 0 33.33333%; }
 
 .column.xs-5 {
-  max-width: 41.66667%; }
+  max-width: 41.66667%;
+  width: 41.66667%;
+  flex: 0 0 41.66667%; }
 
 .column.xs-6 {
-  max-width: 50%; }
+  max-width: 50%;
+  width: 50%;
+  flex: 0 0 50%; }
 
 .column.xs-7 {
-  max-width: 58.33333%; }
+  max-width: 58.33333%;
+  width: 58.33333%;
+  flex: 0 0 58.33333%; }
 
 .column.xs-8 {
-  max-width: 66.66667%; }
+  max-width: 66.66667%;
+  width: 66.66667%;
+  flex: 0 0 66.66667%; }
 
 .column.xs-9 {
-  max-width: 75%; }
+  max-width: 75%;
+  width: 75%;
+  flex: 0 0 75%; }
 
 .column.xs-10 {
-  max-width: 83.33333%; }
+  max-width: 83.33333%;
+  width: 83.33333%;
+  flex: 0 0 83.33333%; }
 
 .column.xs-11 {
-  max-width: 91.66667%; }
+  max-width: 91.66667%;
+  width: 91.66667%;
+  flex: 0 0 91.66667%; }
 
 .column.xs-12 {
-  max-width: 100%; }
+  max-width: 100%;
+  width: 100%;
+  flex: 0 0 100%; }
 
 @media only screen and (min-width: 576px) {
   .column.sm-1 {
-    max-width: 8.33333%; }
+    max-width: 8.33333%;
+    width: 8.33333%;
+    flex: 0 0 8.33333%; }
   .column.sm-2 {
-    max-width: 16.66667%; }
+    max-width: 16.66667%;
+    width: 16.66667%;
+    flex: 0 0 16.66667%; }
   .column.sm-3 {
-    max-width: 25%; }
+    max-width: 25%;
+    width: 25%;
+    flex: 0 0 25%; }
   .column.sm-4 {
-    max-width: 33.33333%; }
+    max-width: 33.33333%;
+    width: 33.33333%;
+    flex: 0 0 33.33333%; }
   .column.sm-5 {
-    max-width: 41.66667%; }
+    max-width: 41.66667%;
+    width: 41.66667%;
+    flex: 0 0 41.66667%; }
   .column.sm-6 {
-    max-width: 50%; }
+    max-width: 50%;
+    width: 50%;
+    flex: 0 0 50%; }
   .column.sm-7 {
-    max-width: 58.33333%; }
+    max-width: 58.33333%;
+    width: 58.33333%;
+    flex: 0 0 58.33333%; }
   .column.sm-8 {
-    max-width: 66.66667%; }
+    max-width: 66.66667%;
+    width: 66.66667%;
+    flex: 0 0 66.66667%; }
   .column.sm-9 {
-    max-width: 75%; }
+    max-width: 75%;
+    width: 75%;
+    flex: 0 0 75%; }
   .column.sm-10 {
-    max-width: 83.33333%; }
+    max-width: 83.33333%;
+    width: 83.33333%;
+    flex: 0 0 83.33333%; }
   .column.sm-11 {
-    max-width: 91.66667%; }
+    max-width: 91.66667%;
+    width: 91.66667%;
+    flex: 0 0 91.66667%; }
   .column.sm-12 {
-    max-width: 100%; } }
+    max-width: 100%;
+    width: 100%;
+    flex: 0 0 100%; } }
 
 @media only screen and (min-width: 768px) {
   .column.md-1 {
-    max-width: 8.33333%; }
+    max-width: 8.33333%;
+    width: 8.33333%;
+    flex: 0 0 8.33333%; }
   .column.md-2 {
-    max-width: 16.66667%; }
+    max-width: 16.66667%;
+    width: 16.66667%;
+    flex: 0 0 16.66667%; }
   .column.md-3 {
-    max-width: 25%; }
+    max-width: 25%;
+    width: 25%;
+    flex: 0 0 25%; }
   .column.md-4 {
-    max-width: 33.33333%; }
+    max-width: 33.33333%;
+    width: 33.33333%;
+    flex: 0 0 33.33333%; }
   .column.md-5 {
-    max-width: 41.66667%; }
+    max-width: 41.66667%;
+    width: 41.66667%;
+    flex: 0 0 41.66667%; }
   .column.md-6 {
-    max-width: 50%; }
+    max-width: 50%;
+    width: 50%;
+    flex: 0 0 50%; }
   .column.md-7 {
-    max-width: 58.33333%; }
+    max-width: 58.33333%;
+    width: 58.33333%;
+    flex: 0 0 58.33333%; }
   .column.md-8 {
-    max-width: 66.66667%; }
+    max-width: 66.66667%;
+    width: 66.66667%;
+    flex: 0 0 66.66667%; }
   .column.md-9 {
-    max-width: 75%; }
+    max-width: 75%;
+    width: 75%;
+    flex: 0 0 75%; }
   .column.md-10 {
-    max-width: 83.33333%; }
+    max-width: 83.33333%;
+    width: 83.33333%;
+    flex: 0 0 83.33333%; }
   .column.md-11 {
-    max-width: 91.66667%; }
+    max-width: 91.66667%;
+    width: 91.66667%;
+    flex: 0 0 91.66667%; }
   .column.md-12 {
-    max-width: 100%; } }
+    max-width: 100%;
+    width: 100%;
+    flex: 0 0 100%; } }
 
 @media only screen and (min-width: 992px) {
   .column.lg-1 {
-    max-width: 8.33333%; }
+    max-width: 8.33333%;
+    width: 8.33333%;
+    flex: 0 0 8.33333%; }
   .column.lg-2 {
-    max-width: 16.66667%; }
+    max-width: 16.66667%;
+    width: 16.66667%;
+    flex: 0 0 16.66667%; }
   .column.lg-3 {
-    max-width: 25%; }
+    max-width: 25%;
+    width: 25%;
+    flex: 0 0 25%; }
   .column.lg-4 {
-    max-width: 33.33333%; }
+    max-width: 33.33333%;
+    width: 33.33333%;
+    flex: 0 0 33.33333%; }
   .column.lg-5 {
-    max-width: 41.66667%; }
+    max-width: 41.66667%;
+    width: 41.66667%;
+    flex: 0 0 41.66667%; }
   .column.lg-6 {
-    max-width: 50%; }
+    max-width: 50%;
+    width: 50%;
+    flex: 0 0 50%; }
   .column.lg-7 {
-    max-width: 58.33333%; }
+    max-width: 58.33333%;
+    width: 58.33333%;
+    flex: 0 0 58.33333%; }
   .column.lg-8 {
-    max-width: 66.66667%; }
+    max-width: 66.66667%;
+    width: 66.66667%;
+    flex: 0 0 66.66667%; }
   .column.lg-9 {
-    max-width: 75%; }
+    max-width: 75%;
+    width: 75%;
+    flex: 0 0 75%; }
   .column.lg-10 {
-    max-width: 83.33333%; }
+    max-width: 83.33333%;
+    width: 83.33333%;
+    flex: 0 0 83.33333%; }
   .column.lg-11 {
-    max-width: 91.66667%; }
+    max-width: 91.66667%;
+    width: 91.66667%;
+    flex: 0 0 91.66667%; }
   .column.lg-12 {
-    max-width: 100%; } }
+    max-width: 100%;
+    width: 100%;
+    flex: 0 0 100%; } }
 
 @media only screen and (min-width: 1200px) {
   .column.xl-1 {
-    max-width: 8.33333%; }
+    max-width: 8.33333%;
+    width: 8.33333%;
+    flex: 0 0 8.33333%; }
   .column.xl-2 {
-    max-width: 16.66667%; }
+    max-width: 16.66667%;
+    width: 16.66667%;
+    flex: 0 0 16.66667%; }
   .column.xl-3 {
-    max-width: 25%; }
+    max-width: 25%;
+    width: 25%;
+    flex: 0 0 25%; }
   .column.xl-4 {
-    max-width: 33.33333%; }
+    max-width: 33.33333%;
+    width: 33.33333%;
+    flex: 0 0 33.33333%; }
   .column.xl-5 {
-    max-width: 41.66667%; }
+    max-width: 41.66667%;
+    width: 41.66667%;
+    flex: 0 0 41.66667%; }
   .column.xl-6 {
-    max-width: 50%; }
+    max-width: 50%;
+    width: 50%;
+    flex: 0 0 50%; }
   .column.xl-7 {
-    max-width: 58.33333%; }
+    max-width: 58.33333%;
+    width: 58.33333%;
+    flex: 0 0 58.33333%; }
   .column.xl-8 {
-    max-width: 66.66667%; }
+    max-width: 66.66667%;
+    width: 66.66667%;
+    flex: 0 0 66.66667%; }
   .column.xl-9 {
-    max-width: 75%; }
+    max-width: 75%;
+    width: 75%;
+    flex: 0 0 75%; }
   .column.xl-10 {
-    max-width: 83.33333%; }
+    max-width: 83.33333%;
+    width: 83.33333%;
+    flex: 0 0 83.33333%; }
   .column.xl-11 {
-    max-width: 91.66667%; }
+    max-width: 91.66667%;
+    width: 91.66667%;
+    flex: 0 0 91.66667%; }
   .column.xl-12 {
-    max-width: 100%; } }
+    max-width: 100%;
+    width: 100%;
+    flex: 0 0 100%; } }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, span {
   font-weight: 400; }
@@ -552,7 +669,7 @@ code {
     justify-content: center;
     align-items: center;
     height: 50px;
-    width: 70px; }
+    width: 50px; }
     [data-component=topnav] .menu-item.white {
       background-color: #FFFFFF; }
     [data-component=topnav] .menu-item.black {
@@ -1542,6 +1659,49 @@ button,
   @media only screen and (min-width: 768px) {
     [data-component=dropdown] {
       top: 70px; } }
+
+[data-component=history] {
+  position: fixed;
+  top: 50px;
+  right: -250px;
+  bottom: 0;
+  background-color: #263238;
+  width: 250px;
+  z-index: 100;
+  -webkit-transition: all 0.125s ease;
+  -moz-transition: all 0.125s ease;
+  -ms-transition: all 0.125s ease;
+  -o-transition: all 0.125s ease;
+  transition: all 0.125s ease; }
+  [data-component=history].active {
+    right: 0; }
+  [data-component=history] .history-header {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: #FFFFFF;
+    height: 70px;
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  [data-component=history] .history-item {
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 10px 5px; }
+    [data-component=history] .history-item p {
+      color: #FFFFFF;
+      font-size: 1.25em; }
+    [data-component=history] .history-item > div {
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 15px; }
+      [data-component=history] .history-item > div span {
+        color: rgba(255, 255, 255, 0.3); }
 
 [data-component=login] {
   height: 100vh;
