@@ -1,0 +1,91 @@
+%modal-default{
+  position: fixed;
+  top: 15px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  @include transition(all $timing $ease);
+}
+
+.modal{
+  @extend %modal-default;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9999;
+
+  @include transition(all $timing $ease);
+
+  &.active{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+  .modal-backdrop{
+    @extend %modal-default;
+    background-color: rgba($black, .95);
+    z-index: 1;
+    top: 0;
+  }
+
+  .modal-close{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 15;
+    display: block;
+
+    height: 32px;
+    width: 32px;
+
+    &:after, &:before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      background-color: $red;
+      height: 2px;
+      width: 70%;
+    }
+
+    &:after{
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:before{
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  .modal-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    max-width: 550px;
+    width: 100%;
+    background-color: $white;
+    padding: 15px;
+    border-radius: $border-radius;
+  }
+
+  .modal-content-title{
+    padding: 10px 15px;
+    text-align: center;
+    font-size: em(18);
+    position: relative;
+    margin-bottom: 25px;
+
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 30%;
+      right: 30%;
+      height: 2px;
+      background-color: $black;
+    }
+  }
+}

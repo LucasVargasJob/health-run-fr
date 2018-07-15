@@ -32,7 +32,6 @@
       <li class="nav-text">Bem Vindo André Carello</li>
       <li><a href="javascript:void(0)" class="menu-item toggleMenu"><i class="fas fa-bars"></i></a></li>
       <li><a href="javascript:void(0)" class="menu-item toggleSearch"><i class="fas fa-search"></i></a></li>
-      <li><a href="javascript:void(0)" class="menu-item toggleHistory"><i class="fas fa-history"></i></a></li>
       <li><a href="login.html"><i class="fas fa-sign-out-alt"></i></a></li>
       <!-- <li><a href=""><i class="fas fa-sign-in-alt"></i></a></li> -->
     </ul>
@@ -41,7 +40,7 @@
   <nav data-component="sidenav" class="collapse">
     <div class="menu-items">
       <div>
-        <a href="javascript:void(0)" data-target=".create-route">CRIAR ROTA</a>
+        <a href="javascript:void(0)" class="to-create-route">CRIAR ROTA</a>
       </div>
       <div>
         <a href="javascript:void(0)" data-target=".calendar">AGENDAR</a>
@@ -49,29 +48,8 @@
           <div class="sub-menu-title">
             <span>AGENDAMENTO</span>
           </div>
-          <form action="">
-            <label>Título</label>
-            <input type="text" name="titulo" class="input">
-
-            <div class="columns">
-              <div class="column xs-6">
-                <label>Mês</label>
-                <select name="mes" id="mes" class="input">
-                </select>
-              </div>
-              <div class="column xs-6">
-                <label>Dia</label>
-                <select name="dia" id="dia" class="input">
-                </select>
-              </div>
-            </div>
-
-            <input type="hidden" name="rota" value="rota-id-1">
-          </form>
+          <div class="sub-menu-routes"></div>
         </div>
-      </div>
-      <div>
-        <a href="javascript:void(0)" data-target=".share-route">COMPARTILHAR ROTA</a>
       </div>
       <div>
         <a href="javascript:void(0)" data-target=".invite">CONVIDAR</a>
@@ -89,27 +67,54 @@
     </div>
   </nav>
 
-  <section data-component="history">
-    <div class="history-header">
-      Histórico
+  <section class="default-content">
+    <div class="welcome">
+      <h1>
+        <small>Bem Vindo(a)</small>
+        <strong>André Carello</strong>
+      </h1>
     </div>
-    <div class="history-item">
-      <p>Redenção</p>
-      <div>
-        <span><i class="far fa-calendar-alt"></i> 16/03/2018</span>
-        <span><i class="far fa-clock"></i> 35:29</span>
+
+    <section class="create-route">
+        <img src="assets/images/05171242823524.jpg" alt="">
+    </section>
+  </section>
+
+  <div class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <a href="#" class="modal-close"></a>
+      <div class="modal-content-title">
+        Preencha o formulário abaixo para <strong>completar o agendamento</strong>:
       </div>
+      <form action="">
+        <label>Título</label>
+        <input type="text" name="titulo" class="input">
+
+        <div class="columns">
+          <div class="column xs-6">
+            <label>Mês</label>
+            <select name="mes" id="mes" class="input">
+            </select>
+          </div>
+          <div class="column xs-6">
+            <label>Dia</label>
+            <select name="dia" id="dia" class="input">
+            </select>
+          </div>
+
+          <div class="column xs-12">
+            <label>Observações</label>
+            <textarea name="obs" rows="3" class="input"></textarea>
+          </div>
+        </div>
+
+        <input type="hidden" name="rota" value="rota-id-1">
+
+        <button type="submit" class="button teal">Salvar</button>
+      </form>
     </div>
-  </section>
-
-
-  <section data-component="map" class="expanded">
-    <img src="assets/images/05171242823524.jpg" alt="">
-  </section>
-
-  <section data-component="share-route"></section>
-
-  <section data-component="create-route"></section>
+  </div>
 
 </main>
 

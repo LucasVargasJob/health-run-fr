@@ -1,6 +1,5 @@
 @mixin create-inputs{
   display: block;
-  height: $create-form-inputs-height;
   padding: 0 $gutter/2;
   max-width: 100%;
   width: 100%;
@@ -8,8 +7,13 @@
   border-radius: $create-form-inputs-border-radius;
   border: 1px solid $gray;
   margin-bottom: $margin;
+  font-family: $roboto;
 
   @include transition(all $timing $ease);
+
+  &:focus{
+    border-color: $gray-900;
+  }
 }
 
 
@@ -19,9 +23,17 @@
   }
   .input{
     @include create-inputs;
+    height: $create-form-inputs-height;
+  }
 
-    &:focus{
-      border-color: $gray-900;
+  textarea.input{
+    @include create-inputs;
+    height: $create-form-inputs-height * 3;
+    resize: none;
+    font-family: $roboto;
+    padding: {
+      top: 5px;
+      bottom: 5px;
     }
   }
 }

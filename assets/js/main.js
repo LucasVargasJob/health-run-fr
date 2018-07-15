@@ -22,7 +22,7 @@ $(document).ready( function() {
     _submenu.toggleClass('active');
     _submenu.find('.sub-menu-title').append('<a href=""><i class="fas fa-chevron-left"></i></a>');
 
-  _submenu.find('a').click( function(event) {
+  _submenu.find('.sub-menu-title a').click( function(event) {
       event.preventDefault();
       _submenu.removeClass('active');
       setTimeout( function() {
@@ -65,6 +65,11 @@ $(document).ready( function() {
       $(PRIVATE.map).addClass('expanded');
     }
   });
+
+  setAllRoutes();
+  toggleContent($('.modal .modal-close'), $('.modal'));
+  toggleContent($('.to-create-routes'), $('.create-route'));
+  addContent($('.to-create-route'), $('.create-route'));
 });
 
 
@@ -82,7 +87,7 @@ $(document).ready(function(){
 
     $.getJSON(APP_ROOT + 'assets/js/data.json', function( data ) {
       $.each(data, function(key, value){
-        if (value.name.search(_expression) != -1){
+        if (value.name.search(_expression) != -1 || value.slug.search(_expression) != -1){
 
           if( value.fav ){
             _icon = 'fas fa-heart';
@@ -188,4 +193,74 @@ function setDay(t, m){
   }
 
   t.innerHTML = r;
+}
+
+
+function setAllRoutes() {
+
+  let _output = '',
+      _icon = '',
+      _note = '',
+      _private = '';
+
+  $.getJSON(APP_ROOT + 'assets/js/data.json', function( data ) {
+    $.each(data, function(key, value){
+
+      console.log(key, value);
+
+      if( value.fav ){
+        _icon = 'fas fa-heart';
+      } else {
+        _icon = 'far fa-heart';
+      }
+
+      if( value.private ){
+        _private = 'fas fa-eye-slash'
+      } else {
+        _private = 'd-none';
+      }
+
+      switch (value.note) {
+        case 1:
+          _note = 'far fa-angry';
+          break;
+        case 2:
+          _note = 'far fa-frown';
+          break;
+        case 3:
+          _note = 'far fa-meh';
+          break;
+        case 4:
+          _note = 'far fa-smile';
+          break;
+        case 5:
+          _note = 'far fa-grin-beam';
+      }
+
+      _output += '<a href="#">';
+      _output += '<span>' + value.name + '</span>';
+      _output += '<div class="icons">';
+      _output += '<i class="' + _private + '"></i>';
+      _output += '<i class="' + _icon + '"></i>';
+      _output += '<i class="' + _note + '"></i>';
+      _output += '</div>';
+      _output += '</a>';
+    });
+
+    $('.sub-menu-routes').html( _output );
+
+    toggleContent($('.sub-menu-routes a'), $('.modal'));
+  });
+}
+
+function toggleContent(_btn, _target){
+  $(_btn).on('click', function() {
+    $(_target).toggleClass('active');
+  });
+}
+
+function addContent(_btn, _target){
+  $(_btn).on('click', function() {
+    $(_target).addClass('active');
+  });
 }

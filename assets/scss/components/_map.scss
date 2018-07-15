@@ -1,27 +1,19 @@
-[data-component=map]{
-  position: relative;
-  top: 70px;
-  left: 250px;
-  height: calc(100vh - 70px);
-  width: calc(100% - 250px);
-  z-index: 2;
+.create-route{
+  position: absolute;
+  top: 15px;
+  left: 0;
+  height: 100%;
+  width: 100%;
 
-  @include transition(all $timing $ease ($timing/2));
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9;
 
-  #map{
-    position: absolute;
+  @include transition(all $timing $ease);
+
+  &.active{
+    opacity: 1;
+    visibility: visible;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  img{
-    width: 100%;
-  }
-
-  &.expanded{
-    width: 100%;
-    left: 0;
   }
 }
