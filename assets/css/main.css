@@ -1894,18 +1894,22 @@ textarea.input {
     justify-content: space-between;
     align-items: stretch; }
     [data-component=login] .container figure {
+      display: none;
       flex: 0 0 40%;
       max-width: 40%;
       width: 40%;
       background-size: cover;
-      background-position: 0 0;
+      background-position: center center;
       background-repeat: no-repeat; }
+      @media only screen and (min-width: 768px) {
+        [data-component=login] .container figure {
+          display: block; } }
     [data-component=login] .container form {
       background-color: transparent;
       padding: 25px 15px 35px;
-      flex: 0 0 60%;
-      max-width: 60%;
-      width: 60%; }
+      flex: 0 0 100%;
+      max-width: 100%;
+      width: 100%; }
       [data-component=login] .container form .form-header {
         padding: 15px;
         margin-bottom: 50px; }
@@ -1926,6 +1930,11 @@ textarea.input {
           font-size: 1.125em;
           text-align: center;
           margin: 0; }
+      @media only screen and (min-width: 768px) {
+        [data-component=login] .container form {
+          flex: 0 0 60%;
+          max-width: 60%;
+          width: 60%; } }
 
 [data-theme=light] [data-component=topnav] {
   border-bottom: 1px solid #d9d9d9;

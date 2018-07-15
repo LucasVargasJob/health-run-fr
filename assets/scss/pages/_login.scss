@@ -23,22 +23,27 @@
     align-items: stretch;
 
     figure{
+      display: none;
       flex: 0 0 40%;
       max-width: 40%;
       width: 40%;
       background: {
         size: cover;
-        position: 0 0;
+        position: center center;
         repeat: no-repeat;
+      }
+
+      @include media('md'){
+        display: block;
       }
     }
 
     form{
       background-color: transparent;
       padding: 25px 15px 35px;
-      flex: 0 0 60%;
-      max-width: 60%;
-      width: 60%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      width: 100%;
 
       .form-header{
         padding: 15px;
@@ -67,6 +72,12 @@
           text-align: center;
           margin: 0;
         }
+      }
+
+      @include media('md'){
+        flex: 0 0 60%;
+        max-width: 60%;
+        width: 60%;
       }
     }
   }
