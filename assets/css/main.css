@@ -878,7 +878,12 @@ code {
       -o-transition: all 0.125s ease;
       transition: all 0.125s ease; }
       [data-component=sidenav] .menu-items .sub-menu.active {
-        left: 0; }
+        left: 0;
+        -webkit-box-shadow: 3px 0 15px rgba(0, 0, 0, 0.55);
+        -moz-box-shadow: 3px 0 15px rgba(0, 0, 0, 0.55);
+        -ms-box-shadow: 3px 0 15px rgba(0, 0, 0, 0.55);
+        -o-box-shadow: 3px 0 15px rgba(0, 0, 0, 0.55);
+        box-shadow: 3px 0 15px rgba(0, 0, 0, 0.55); }
       [data-component=sidenav] .menu-items .sub-menu .sub-menu-title {
         color: #FFFFFF;
         height: 50px;
@@ -1980,5 +1985,7 @@ textarea.input {
       [data-theme=dark] [data-component=sidenav] .menu-items > a:hover, [data-theme=dark] [data-component=sidenav] .menu-items > a:focus {
         color: #263238;
         background-color: #d9cdc7; }
+    [data-theme=dark] [data-component=sidenav] .menu-items label {
+      color: #FFFFFF; }
     [data-theme=dark] [data-component=sidenav] .menu-items .sub-menu {
       background-color: #222d32; }

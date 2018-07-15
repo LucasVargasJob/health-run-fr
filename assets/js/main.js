@@ -20,6 +20,7 @@ $(document).ready( function() {
         _submenu = $(_target);
 
     _submenu.toggleClass('active');
+    _submenu.find('.sub-menu-title a').remove();
     _submenu.find('.sub-menu-title').append('<a href=""><i class="fas fa-chevron-left"></i></a>');
 
   _submenu.find('.sub-menu-title a').click( function(event) {
