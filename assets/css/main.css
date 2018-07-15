@@ -1872,18 +1872,60 @@ textarea.input {
         color: rgba(255, 255, 255, 0.3); }
 
 [data-component=login] {
-  background-color: #263238;
+  background-color: #1c2429;
   height: 100vh;
   width: 100%; }
   [data-component=login] .container {
-    height: 90vh;
     width: 90%;
+    max-width: 550px;
     background-color: #FFFFFF;
+    padding: 0;
     -webkit-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.5);
     -ms-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.5);
     -o-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.5); }
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.5);
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; }
+    [data-component=login] .container figure {
+      flex: 0 0 40%;
+      max-width: 40%;
+      width: 40%;
+      background-size: cover;
+      background-position: 0 0;
+      background-repeat: no-repeat; }
+    [data-component=login] .container form {
+      background-color: transparent;
+      padding: 25px 15px 35px;
+      flex: 0 0 60%;
+      max-width: 60%;
+      width: 60%; }
+      [data-component=login] .container form .form-header {
+        padding: 15px;
+        margin-bottom: 50px; }
+        [data-component=login] .container form .form-header h1 {
+          position: relative;
+          margin-top: 30px;
+          margin-bottom: 5px;
+          text-align: center; }
+          [data-component=login] .container form .form-header h1:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 30%;
+            right: 30%;
+            height: 3px;
+            background-color: #000000; }
+        [data-component=login] .container form .form-header h2 {
+          font-size: 1.125em;
+          text-align: center;
+          margin: 0; }
 
 [data-theme=light] [data-component=topnav] {
   border-bottom: 1px solid #d9d9d9;
@@ -1905,7 +1947,7 @@ textarea.input {
       background-color: #263238; }
 
 [data-theme=dark] [data-component=login] form {
-  background-color: #263238; }
+  background-color: #FFFFFF; }
 
 [data-theme=dark] [data-component=topnav] {
   border-bottom: 1px solid #1c2429;

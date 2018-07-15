@@ -1,14 +1,74 @@
 [data-component=login]{
 
-  background-color: $blue-gray-900;
+  background-color: darken($blue-gray-900, 5%);
   height: 100vh;
   width: 100%;
 
   .container{
-    height: 90vh;
     width: 90%;
+    max-width: 550px;
     background-color: $white;
+    padding:  0;
     @include box-shadow(0 0 8px 1px rgba($black, .5));
+
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: stretch;
+
+    figure{
+      flex: 0 0 40%;
+      max-width: 40%;
+      width: 40%;
+      background: {
+        size: cover;
+        position: 0 0;
+        repeat: no-repeat;
+      }
+    }
+
+    form{
+      background-color: transparent;
+      padding: 25px 15px 35px;
+      flex: 0 0 60%;
+      max-width: 60%;
+      width: 60%;
+
+      .form-header{
+        padding: 15px;
+        margin-bottom: 50px;
+
+        h1{
+          position: relative;
+          margin: {
+            top: 30px;
+            bottom: 5px;
+          }
+          text-align: center;
+
+          &:after{
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 30%;
+            right: 30%;
+            height: 3px;
+            background-color: $black;
+          }
+        }
+        h2{
+          font-size: em(18);
+          text-align: center;
+          margin: 0;
+        }
+      }
+    }
   }
 
 }

@@ -69,7 +69,14 @@ $(document).ready( function() {
   setAllRoutes();
   toggleContent($('.modal .modal-close'), $('.modal'));
   toggleContent($('.to-create-routes'), $('.create-route'));
-  addContent($('.to-create-route'), $('.create-route'));
+
+  $('.to-create-route').on('click', function() {
+    $('.create-route').addClass('active');
+
+    if($(window).width() < 768){
+      $('[data-component=sidenav]').addClass('collapse');
+    }
+  })
 });
 
 
