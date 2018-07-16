@@ -1,3 +1,193 @@
+let FIREBASE = window.firebase;
+let FUNC = {};
+let MAPS = {
+	points: []
+};
+
+FIREBASE.initializeApp({
+	apiKey: "AIzaSyCYdoB7w1-T6Aogb6RCUDpVSWtu-n5AMpY",
+	authDomain: "healthrun-21110.firebaseapp.com",
+	databaseURL: "https://healthrun-21110.firebaseio.com",
+	projectId: "healthrun-21110",
+	storageBucket: "",
+	messagingSenderId: "541187771630"
+});
+
+
+// SESSION REDIRECT
+FIREBASE.auth().onAuthStateChanged((user) => {
+	let isSigninPathname = window.location.pathname === '/';
+
+	if(user && !isSigninPathname) {
+		window.location.replace('/');
+		return;
+	}
+
+	if(!user && isSigninPathname) {
+		window.location.replace('/login');
+		return;
+	}
+
+
+  	FUNC.setName();
+});
+
+
+FUNC.loginCred = function() {
+	return {
+		user: document.querySelector('#user').value,
+		pwd: document.querySelector('#pwd').value
+	}
+};
+
+
+FUNC.loginBind= function() {
+	let formLogin = document.querySelector('#loginForm');
+	
+	if(!formLogin) {
+		return;
+	}	
+
+	formLogin.addEventListener('submit', function(ev) {
+		ev.preventDefault();
+
+		let cred = FUNC.loginCred();
+		
+		FIREBASE
+		.auth()
+		.signInWithEmailAndPassword(cred.user, cred.pwd)
+		.catch(function(error) {
+			console.log(error);
+			alert(error.message);
+		});
+	});
+};
+
+
+FUNC.setName = function() {
+	let el = document.querySelectorAll('.nav-text')[0];
+	
+	if(!el) {
+		return;
+	}
+	
+	el.innerHTML = FIREBASE.auth().currentUser.email;
+};
+
+
+FUNC.signoutBind = function() {
+	let btnLogout = document.querySelector('#btnLogout');
+	
+	if(!btnLogout) {
+		return;
+	}
+
+	btnLogout.addEventListener('click', function() {
+		FIREBASE.auth().signOut();
+	});	
+};
+
+
+MAPS.saveRoute = (d) => {
+	let uid = FIREBASE.auth().currentUser.uid;
+	return FIREBASE.database().ref().child(uid+'@route').push(d);
+};
+
+
+MAPS.getRouteList = () => {
+	let uid = FIREBASE.auth().currentUser.uid;
+	let routeTable = uid + '@route';
+
+	return FIREBASE
+	.database()
+	.ref()
+	.child(routeTable)
+	.once('value')
+	.then(function(snapshot) {
+		return snapshot;
+	});
+};
+
+
+MAPS.addLatLng = (ev, poly, map) => {
+	var posicao = [
+		ev.latLng.lat(),
+		ev.latLng.lng()
+	];
+
+	MAPS.points.push(posicao);
+
+	var path = poly.getPath();
+	path.push(ev.latLng);
+
+	var marker = new window.google.maps.Marker({
+		position: ev.latLng,
+		icon: {
+			path: google.maps.SymbolPath.CIRCLE,
+			scale: 5
+		},
+		title: '#' + path.getLength(),
+		map: map
+	});
+};
+
+
+MAPS.init = () => {
+	let map;
+	let infoWindow;
+	let poly;
+
+	map = new window.google.maps.Map(
+		document.querySelector('#internalContent'),
+		{
+			zoom: 18,
+			center: {
+				lat: -30.030200877581464,
+				lng: -51.23094320297241
+			},
+		}
+	);
+
+	infoWindow = new google.maps.InfoWindow; // jshint ignore: line
+
+	if (!navigator.geolocation) {
+		return;
+	}
+
+	navigator.geolocation.getCurrentPosition( (position) => {
+		let pos = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		};
+
+		infoWindow.setPosition(pos);
+		infoWindow.setContent('Você está aqui.');
+		infoWindow.open(map);
+
+		map.setCenter(pos);
+	}, function(err) {
+		alert(err.message);
+	});
+
+	poly = new google.maps.Polyline({
+		strokeColor: '#000000',
+		strokeOpacity: 1.0,
+		strokeWeight: 3
+	});
+
+	poly.setMap(map);
+
+	map.addListener('click', (ev) => {
+		MAPS.addLatLng(ev, poly, map);
+	});
+
+};
+
+
+FUNC.loginBind();
+FUNC.signoutBind();
+
+
 let current = new Date();
 let dd = current.getDate();
 let mm = current.getMonth() + 1;
@@ -68,8 +258,11 @@ $(document).ready( function() {
   });
 
   setAllRoutes();
-  toggleContent($('.modal .modal-close'), $('.modal'));
+  toggleContent($('.modal-schedule .modal-close'), $('.modal-schedule'));
+  toggleContent($('.create-route .button'), $('.modal-routes'));
+  toggleContent($('.modal-routes .modal-close'), $('.modal-routes'));
   toggleContent($('.to-create-routes'), $('.create-route'));
+  isChecked($('.sub-menu-invites a'));
 
   $('.to-create-route').on('click', function() {
     $('.create-route').addClass('active');
@@ -257,7 +450,7 @@ function setAllRoutes() {
 
     $('.sub-menu-routes').html( _output );
 
-    toggleContent($('.sub-menu-routes a'), $('.modal'));
+    toggleContent($('.sub-menu-routes a'), $('.modal-schedule'));
   });
 }
 
@@ -270,5 +463,12 @@ function toggleContent(_btn, _target){
 function addContent(_btn, _target){
   $(_btn).on('click', function() {
     $(_target).addClass('active');
+  });
+}
+
+function isChecked(_btn){
+  $(_btn).on('click', function() {
+    $(this).addClass('select');
+    $(this).siblings().addClass('disabled');
   });
 }

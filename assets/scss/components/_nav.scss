@@ -284,6 +284,69 @@
         }
       }
 
+      .sub-menu-invites{
+        height: calc( 100vh - 140px);
+        overflow: auto;
+
+        >div{
+          width: 100%;
+          display: -webkit-flex;
+          display: -ms-flex;
+          display: flex;
+
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid rgba($black, .15);
+          padding: 0 15px;
+
+          span{
+            flex: 1 1 100%;
+            color: $white;
+          }
+
+          .icons{
+            height: 50px;
+            width: 90px;
+            padding: 0;
+
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          a{
+            height: 32px;
+            width: 32px;
+            max-width: 32px;
+            flex: 0 0 32px;
+
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: $white;
+            text-decoration: none!important;
+
+            &.accept{
+              background-color: $blue;
+            }
+            &.reject{
+              background-color: $red;
+            }
+
+            &.disabled{
+              background-color: rgba($black, .35);
+              cursor: default;
+              pointer-events: none;
+            }
+          }
+        }
+      }
+
       form{
         padding: ($padding / 2) $padding;
       }

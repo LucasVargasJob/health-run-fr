@@ -9,6 +9,10 @@
   margin-bottom: $margin;
   font-family: $roboto;
 
+  &[disabled]{
+    border: none;
+  }
+
   @include transition(all $timing $ease);
 
   &:focus{

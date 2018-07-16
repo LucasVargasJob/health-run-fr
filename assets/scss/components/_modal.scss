@@ -88,4 +88,16 @@
       background-color: $black;
     }
   }
+
+  .flex{
+    display: flex;
+    height: 50px;
+    align-items: center;
+
+    label{
+      height: 50px;
+      padding-top: 8px;
+      margin-right: 10px;
+    }
+  }
 }

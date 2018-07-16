@@ -199,7 +199,7 @@ body {
     -ms-transition: all 0.125s ease 0.0625s;
     -o-transition: all 0.125s ease 0.0625s;
     transition: all 0.125s ease 0.0625s; }
-    @media only screen and (min-width: 992px) {
+    @media only screen and (min-width: 768px) {
       body .default-content {
         top: 70px;
         left: 250px;
@@ -222,7 +222,7 @@ body {
         display: block; }
     @media only screen and (min-width: 992px) {
       body .welcome h1 {
-        font-size: 3.75em; } }
+        font-size: 2.5em; } }
 
 columns,
 .columns {
@@ -931,6 +931,50 @@ code {
             align-items: center; }
             [data-component=sidenav] .menu-items .sub-menu .sub-menu-routes a .icons i {
               padding: 0 5px; }
+      [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites {
+        height: calc( 100vh - 140px);
+        overflow: auto; }
+        [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites > div {
+          width: 100%;
+          display: -webkit-flex;
+          display: -ms-flex;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+          padding: 0 15px; }
+          [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites > div span {
+            flex: 1 1 100%;
+            color: #FFFFFF; }
+          [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites > div .icons {
+            height: 50px;
+            width: 90px;
+            padding: 0;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; }
+          [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites > div a {
+            height: 32px;
+            width: 32px;
+            max-width: 32px;
+            flex: 0 0 32px;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+            text-decoration: none !important; }
+            [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites > div a.accept {
+              background-color: #2196F3; }
+            [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites > div a.reject {
+              background-color: #F44336; }
+            [data-component=sidenav] .menu-items .sub-menu .sub-menu-invites > div a.disabled {
+              background-color: rgba(0, 0, 0, 0.35);
+              cursor: default;
+              pointer-events: none; }
       [data-component=sidenav] .menu-items .sub-menu form {
         padding: 10px 20px; }
     [data-component=sidenav] .menu-items > div:nth-child(1) > a {
@@ -1670,6 +1714,8 @@ button,
   -o-transition: all 0.125s ease;
   transition: all 0.125s ease;
   height: 34px; }
+  .input[disabled] {
+    border: none; }
   .input:focus {
     border-color: #212121; }
 
@@ -1693,6 +1739,8 @@ textarea.input {
   font-family: "Roboto", sans-serif;
   padding-top: 5px;
   padding-bottom: 5px; }
+  textarea.input[disabled] {
+    border: none; }
   textarea.input:focus {
     border-color: #212121; }
 
@@ -1714,6 +1762,18 @@ textarea.input {
     opacity: 1;
     visibility: visible;
     top: 0; }
+  .create-route .map {
+    position: relative;
+    height: calc(100vh - 130px); }
+  .create-route .button.block {
+    width: 90%;
+    height: 50px;
+    margin: 5px auto;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
 
 .modal, .modal .modal-backdrop {
   position: fixed;
@@ -1789,6 +1849,14 @@ textarea.input {
       right: 30%;
       height: 2px;
       background-color: #000000; }
+  .modal .flex {
+    display: flex;
+    height: 50px;
+    align-items: center; }
+    .modal .flex label {
+      height: 50px;
+      padding-top: 8px;
+      margin-right: 10px; }
 
 [data-component=dropdown] {
   position: absolute;

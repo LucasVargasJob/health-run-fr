@@ -31,7 +31,7 @@ body{
 
     @include transition(all $timing $ease ($timing/2));
 
-    @include media('lg'){
+    @include media('md'){
       top: 70px;
       left: 250px;
       width: calc(100% - 250px);
@@ -60,7 +60,7 @@ body{
 
     @include media('lg'){
       h1{
-        font-size: em(60)
+        font-size: em(40)
       }
     }
   }

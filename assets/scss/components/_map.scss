@@ -16,4 +16,22 @@
     visibility: visible;
     top: 0;
   }
+
+  .map{
+    position: relative;
+    height: calc(100vh - 130px);
+  }
+
+  .button{
+    &.block{
+      width: 90%;
+      height: 50px;
+      margin: 5px auto;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
